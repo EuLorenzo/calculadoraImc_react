@@ -12,6 +12,16 @@ function App() {
 
   function handleCalculateBmi(event : any){
     event.preventDefault()
+
+    if(height === 0 || weight === 0){
+      setUserMessage("Please fill all fields !!")
+      setBackground("red")
+      return
+    }else if(height < 0 || weight < 0){
+      setUserMessage("Fill the fields correctly !!")
+      setBackground("red")
+      return
+    }
     
     const bmi = weight / (height * height)
     setBmi(bmi.toFixed(2))
@@ -62,7 +72,7 @@ function App() {
         setWeight(parseFloat(value))
         break;
       default:
-        console.log("caiu default")
+        console.error("Caiu default - Linha 65 (App)")
         break;
     }
   }
