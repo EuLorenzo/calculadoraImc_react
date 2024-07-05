@@ -10,9 +10,10 @@ function App() {
   const [weight, setWeight] = useState(0)
   const [bmi, setBmi] = useState("")
 
-  function handleCalculateBmi(event : any){
+  function handleCalculateBmi(event : React.FormEvent){
     event.preventDefault()
 
+    //Checking fields
     if(height === 0 || weight === 0){
       setUserMessage("Please fill all fields !!")
       setBackground("red")
@@ -22,7 +23,7 @@ function App() {
       setBackground("red")
       return
     }
-    
+
     const bmi = weight / (height * height)
     setBmi(bmi.toFixed(2))
     calculateDanger(bmi)
@@ -50,12 +51,15 @@ function App() {
       setBackground("orange")
       setUserMessage("Overweight !!")
     }else if(bmi < 34.5){
+      //Obesidade level 1
       setBackground("#d00000")
       setUserMessage("Obesity Level 1 💀")
     }else if(bmi < 39.9){
+      //Obesidade level 2
       setBackground("#9d0208")
       setUserMessage("Obesity Level 2 💀💀")
     }else if(bmi > 40){
+      //Obesidade level 3
       setBackground("#6a040f")
       setUserMessage("Obesity Level 3 💀💀💀")
     }
@@ -96,13 +100,11 @@ function App() {
             <Button
               type="submit"
               content="Calculate BMI"
-              onSubmit={handleCalculateBmi}
             />
 
             <Button
               type="reset"
               content="Reset"
-              onSubmit={handleCalculateBmi}
             />
           </Styled.Buttons>
         </form>

@@ -2,7 +2,7 @@ import * as Styled from "./styled"
 
 interface InputProps{
     content : string
-    onChange : Function
+    onChange : (a:string, b:string) => void
 }
 
 function Input({content, onChange} : InputProps){
